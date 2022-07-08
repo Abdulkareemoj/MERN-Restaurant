@@ -7,6 +7,10 @@ export default class RestaurantsDAO{
         }
     try{
         restaurants=await conn.db(process.env.RESTREVIEWS_NS)
+    }catch (e){
+        console.error(
+        `Unable to establish connection handle in restaurant`
+        )
     }
     }
 

@@ -29,4 +29,15 @@ export default class RestaurantsDAO {
         } else if ("zipcode" in filters)
             query = { "address.zipcode": { $eq: filters["zipcode"] } }
     }
-} 
+}
+
+let cursor
+try {
+    cursor = await restaurants
+        .find(query)
+} catch (e) {
+    console.error(
+        `Unable to issue a command, ${e}`
+    )
+    return { restaurantsList: [], totalNumRestaurants: 0 }
+}

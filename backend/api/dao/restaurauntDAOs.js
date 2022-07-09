@@ -21,7 +21,10 @@ static async getRestaurants({
 }= {}){
     let query
     if (filters){
-        if 
-    }
+        if ("name" in filters){
+            query={$text: {$search: filters["name"]}}
+        }else if("cuisine" in filters){
+        query={"cuisine" {$eq: filters["cuisine"]}}
+    }}else if("zipcode" in filters)
 }
 } 
